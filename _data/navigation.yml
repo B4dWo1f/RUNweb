@@ -1,0 +1,10 @@
+- name: Pronósticos
+  link: /
+- name: About
+  link: /about.html
+- name: Propiedades
+  link: properties.html
+- name: Curva de estado
+  link: sounding.html
+- name: Server
+  link: system.html
