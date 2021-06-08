@@ -52,6 +52,8 @@ function update_plots(){
    document.getElementById('plot_title').innerHTML = generate_title();
    // Rivers
    document.getElementById('rivers_layer').src = path+'/rivers'+Zoom+'.png';
+   // Roads
+   document.getElementById('road_layer').src = path+'/roads'+Zoom+'.png';
    // CCAA
    document.getElementById('ccaa_layer').src = path+'/ccaa'+Zoom+'.png';
    // Takeoffs

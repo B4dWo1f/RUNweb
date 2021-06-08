@@ -9,10 +9,6 @@ title: Rasp by Uri and Noel
 {% assign Ihour = 14 %}
 {% assign ISprop = 'SFCwind' %}
 
-## NOTA
-Tras un grave error mío debería estar todo arreglado. Los datos que faltan se irán calculando en las próximas horas siguiendo el horario descrito <a href='/about.html'>aquí</a>
-
-
 
 <h2>Dominio</h2>
 <div class='domain_selector' align="center">
@@ -101,10 +97,15 @@ Tras un grave error mío debería estar todo arreglado. Los datos que faltan se 
 <input type="checkbox"  onChange="javascript:toggleVisibility(['cities_names_layer'])" autocomplete="off" name='foo'>
 <span>Ciudades</span>
 </label>
+<label>
+<input type="checkbox"  onChange="javascript:toggleVisibility(['road_layer'])" autocomplete="off" name='foo'>
+<span>Carreteras</span>
+</label>
 
 <div class='map_container'>
    <img class="base_map" id="terrain_layer"/>
    <img class="over"    id="rivers_layer"/>
+   <img class="over start_hidden"    id="road_layer"/>
    <img class="over"    id="ccaa_layer"/>
    <img class="over"    id="takeoffs_layer"/>
    <img class="over"    id="cities_layer"/>
