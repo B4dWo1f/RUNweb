@@ -3,8 +3,8 @@
 - name: About
   link: /about.html
 - name: Propiedades
-  link: properties.html
+  link: /properties.html
 - name: Curva de estado
-  link: sounding.html
+  link: /sounding.html
 - name: Server
-  link: system.html
+  link: /system.html
