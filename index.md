@@ -102,6 +102,8 @@ title: Rasp by Uri and Noel
 <span>Carreteras</span>
 </label>
 
+<input id="SliderOpacity" class="slider_opacity" type="range" min="0" max="100" value="65" oninput="javascript:set_opacity(this.value,['Sprop_layer']);">
+
 <div class='map_container'>
    <img class="base_map" id="terrain_layer"/>
    <img class="over"    id="rivers_layer"/>

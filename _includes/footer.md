@@ -10,7 +10,9 @@ Oriol Casals<br>
 </div>
 
 <div class="personal_details" id='logo'>
+<a href='http://www.denubeanube.com/'>
 <img class="logo" src="/assets/images/logo_club.svg"/>
+</a>
 </div>
 
 <div class="personal_details" id='noel'>

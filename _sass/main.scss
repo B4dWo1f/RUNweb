@@ -539,7 +539,7 @@ footer {
 }
 
 .personal_details .logo {
-   height: 3em;
+   height: 3.5em;
 }
 
 .personal_details .media {
@@ -568,3 +568,46 @@ footer {
 .start_hidden {
    visibility: hidden;
 }
+
+
+// Slider
+.slider_opacity {
+   -webkit-appearance: none;
+   -webkit-transition: .2s;
+   -moz-appearance: none;  /*unnecessary: not defined in mozilla*/
+   -moz-transition: .2s;
+   position: relative;
+   /* border:1px; */
+   width: 70%;
+   height:  var(--slider-height);
+   border-radius: 5px;
+   background: #d3d3d3;
+   opacity: 0.7;
+   transition: opacity .2s;
+}
+
+.slider_opacity:hover{
+   opacity: 1;
+   outline: none;
+}
+
+// .slider_opacity::-webkit-slider-thumb {
+//    -webkit-appearance: none;
+//    outline: none;
+//    appearance: none;
+//    width:  calc(var(--slider-height) + 10px);
+//    height:  calc(var(--slider-height) + 10px);
+//    border-radius: 50%;
+//    background-color: rgba(65,165,234);
+//    cursor: pointer;
+// }
+
+// .slider_opacity::-moz-range-thumb {
+//    -moz-appearance: none;
+//    outline: none;
+//    width:  calc(var(--slider-height) + 10px);
+//    height:  calc(var(--slider-height) + 10px);
+//    border-radius: 50%;
+//    background-color: rgba(65,165,234);
+//    cursor: pointer;
+// }

@@ -226,3 +226,12 @@ function toggleVisibility(ids) {
    }
 }
 
+
+// ------------ Slider ------------
+function set_opacity(x,layers) {
+   var layersLength = layers.length;
+   for (var i = 0; i < layersLength; i++) {
+      document.getElementById(layers[i]).style.opacity = x/100;
+   }
+   // replot_scalar(Sprop);
+}
