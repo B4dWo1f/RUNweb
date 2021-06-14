@@ -9,6 +9,7 @@
    --button-activeShadow: #001028;
    --scalar-blend: multiply;
    --img-max-width:800px;
+   --slider-height: 5px;
 /* multiply */
 /* screen */
 /* overlay */
@@ -577,6 +578,7 @@ footer {
    -moz-appearance: none;  /*unnecessary: not defined in mozilla*/
    -moz-transition: .2s;
    position: relative;
+   max-width: var(--img-max-width);
    /* border:1px; */
    width: 70%;
    height:  var(--slider-height);

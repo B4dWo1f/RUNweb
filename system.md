@@ -11,7 +11,7 @@ title: System status
 El promedio se calcula con una media ponderada por tiempo. El peso de los datos es la región sombreada. 
 <img class="post__img cores" src="/assets/images/time_run.png">
 
-NOTA: Los últimos picos en los tiempos se deben a los tiempos de espera en la descarga de los datos del GFS para tener siempre los datos más actualizados. A partir del 2 de junio los tiempos sólo describen el tiempo de ejecución del WRF
+NOTA: Empezando el 14 de juno estamos probando un dominio más ajustado logrando  (casi) duplicar el rendimiento
 
 
 # Time step distribution
