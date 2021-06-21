@@ -59,9 +59,12 @@ function update_plots(){
    // Takeoffs
    document.getElementById('takeoffs_layer').src = path+'/takeoffs'+Zoom+'.png';
    document.getElementById('takeoffs_names_layer').src = path+'/takeoffs_names'+Zoom+'.png';
-   // Takeoffs
+   // Cities
    document.getElementById('cities_layer').src = path+'/cities'+Zoom+'.png';
    document.getElementById('cities_names_layer').src = path+'/cities_names'+Zoom+'.png';
+   // Peaks
+   document.getElementById('peaks_layer').src = path+'/peaks'+Zoom+'.png';
+   document.getElementById('peaks_names_layer').src = path+'/peaks_names'+Zoom+'.png';
    // Scalar
    var fname = generate_filename(hour,Sprop, false, '');
    document.getElementById('Sprop_layer').src = path+'/'+fname;

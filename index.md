@@ -101,8 +101,12 @@ title: Rasp by Uri and Noel
 <input type="checkbox"  onChange="javascript:toggleVisibility(['road_layer'])" autocomplete="off" name='foo'>
 <span>Carreteras</span>
 </label>
+<label>
+<input type="checkbox"  onChange="javascript:toggleVisibility(['peaks_layer'])" autocomplete="off" name='foo'>
+<span>Cimas</span>
+</label>
 
-<input id="SliderOpacity" class="slider_opacity" type="range" min="0" max="100" value="65" oninput="javascript:set_opacity(this.value,['Sprop_layer']);">
+<input id="SliderOpacity" class="slider_opacity" type="range" min="0" max="100" value="50" oninput="javascript:set_opacity(this.value,['Sprop_layer']);">
 
 <div class='map_container'>
    <img class="base_map" id="terrain_layer"/>
@@ -110,6 +114,8 @@ title: Rasp by Uri and Noel
    <img class="over start_hidden"    id="road_layer"/>
    <img class="over"    id="ccaa_layer"/>
    <img class="over"    id="takeoffs_layer"/>
+   <img class="over start_hidden"    id="peaks_layer"/>
+   <img class="over start_hidden"    id="peaks_names_layer"/>
    <img class="over"    id="cities_layer"/>
    <img class="over start_hidden"    id="takeoffs_names_layer"/>
    <img class="over start_hidden"    id="cities_names_layer"/>
@@ -168,7 +174,7 @@ use UTCtime
 <!-- Soundings -->
 <table class='table_sounding'>
 <tr>
-   <th colspan="2">Curvas de estado <span style='font-size:0.5em;font-weight: normal;'><a id="sounding_link" href='/curva_estado.html'>(info)</a></span></th>
+   <th colspan="2">Curvas de estado <span style='font-size:0.5em;font-weight: normal;'><a id="sounding_link" href='/sounding.html'>(+info)</a></span></th>
 </tr>
 {% for place in site.data.soundings %}
 <tr>

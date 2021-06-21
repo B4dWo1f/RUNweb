@@ -11,7 +11,7 @@ title: System status
 El promedio se calcula con una media ponderada por tiempo. El peso de los datos es la región sombreada. 
 <img class="post__img cores" src="/assets/images/time_run.png">
 
-NOTA: Empezando el 14 de juno estamos probando un dominio más ajustado logrando  (casi) duplicar el rendimiento
+NOTA: Probando 15 cores a partir de la marca vertical
 
 
 # Time step distribution

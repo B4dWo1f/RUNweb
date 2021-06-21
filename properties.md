@@ -3,59 +3,11 @@ layout: posts
 title: Properties
 ---
 
-<!--
-# Curva de estado
-
-Cuando tenga un rato escribiré cómo interpretar las curvas de estado (si alguien quiere contribuir, que nos contacte). Mientras tanto  voy a dejar aquí una breve explicación de cada parte de las gráficas para entender los cambios realizados.
-
-<img class='post__img' src='/assets/images/sounding.png'/>
-
-El gráfico de la **izquierda** es la típica curva de estado. Lo único nuevo es la **línea negra** que representa la *trayectoria que "una parcela de aire"* seguiría al calentarse ciertos grados y elevarse a través de la atmósfera. No obstante, una vez esta trayectoria se cruza con la curva de estado (línea roja) el resto de la trayectoria no tiene significado físico.  
-La <span style="color:rgb(214,39,40);">región roja sombreada </span> es el [CAPE](https://es.wikipedia.org/wiki/Energ%C3%ADa_potencial_convectiva_disponible). Hay que tener en cuenta que la temperatura a la que se desprende la térmica suele ser algo mayor que la que da el modelo.
-
-
-En la sección de la **derecha** hay dos gráficas, una vertical alargada y otra cuadrada en la parte superior.
-
-La gráfica **vertical** muestra la **intensidad** del viento como función de la altura. El eje de la derecha muestra la *altitud en metros* (hay que mirar los ticks pequeños, y arreglaré el formato cuando tenga tiempo). El eje horizontal muestra la *intensidad del viento en `km/h`*.
-
-La gráfica **cuadrada** muestra tanto la **dirección** como la **intensidad** del viento. La intensidad son los círculos punteados. La dirección es el ángulo.
-Para los que vengan de la aviación, creo que en este tipo de gráficas ([Hodografa](https://en.wikipedia.org/wiki/Hodograph)) suele darse el ángulo inverso ("hacia dónde va" el viento en lugar de "de dónde viene").
-
-La relación entre las dos gráficas es mediante el color, que además marca la altitud.
-Los datos se pintan en **<span style="color:rgb(148,103,189);">
-morado
-</span>**-
-**<span style="color:rgb(214, 39, 40);">
-rojo
-</span>**-
-**<span style="color:rgb(44,160, 44);">
-verde
-</span>**-
-**<span style="color:rgb(255,127, 14);">
-naranja
-</span>**-
-**<span style="color:rgb(31,119,180);">
-azul
-</span>** según la altitud. Para hacer más visibles las escalas de poco viento corto los datos a `50km/h`, por lo que muy a menudo el viento en altura no se ve en los datos.
-
-El primer punto, en morado, son las condiciones en el suelo, según subimos en altura podemos ver la intensidad y dirección del viento siguiendo el código de colores en ambas gráficas.
-
-Vamos analizar nuestro ejemplo usando los puntos marcados.
-1. **<span style="color:rgb(148,103,189);">Morado</span>**, se situa en el suelo, en nuestro caso, está a media ladera de Arcones (~1500m).
-De la gráfica vertical podemos sacar que habrá un viendo de aprox `7km/h`.
-De la gráfica cuadrada vemos que ese punto está levemente a la izquierda de la línea que marca el norte. Por tanto esperamos unos `7km/h` viniendo de NNW
-1. **<span style="color:rgb(44,160, 44);">Verde</span>**, se sitúa a ~2500m, la intensidad del viento ha disminuido un poco, algo menos de `5km/h` y con tendencia más W que en el suelo. Además mirando los siguiente puntos se ve que el viento va cogiendo tendencia al SW según vamos subiendo en altitud.
-1. **<span style="color:rgb(255,127, 14);">Naranja</span>**, algo por encima de los 5000m, ya hay más de 50km/h de viento y con dirección prácticamente W.
-1. **<span style="color:rgb(31,119,180);">Azul</span>**. Los puntos azules en general no nos interesan. Son viento en capas muy altas; el tope de los datos está a `50mbar` (por recomendación de los autores del WRF), que es bastante más alto que la tropopausa. En nuestro caso podemos ver que el viento se mantiene de W a ratos WSW a todas las alturas.
-
-
--->
-
 # Techo
 Es la **altura efectiva** a la que podremos subir gracias a convección **térmica**.
 En presencia de nubes puede que la convección suba más de lo indicado por `Techo`, pero no es una altitud que podamos (ni debamos) aprovechar con el parapente.
 `Techo` es, en cada punto del dominio, la menor de estas tres cantidades:
-* Altura de la térmica
+* Altura de la térmica aprovechable por un parapente (`W*>1.1m/s`)
 * Base de las nubes convectivas
 * Base de las nubes no convectivas  
 
