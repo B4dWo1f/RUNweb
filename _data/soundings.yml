@@ -1,15 +1,28 @@
 - name: somosierra
+  code: somosierra
 - name: bustarviejo
+  code: bustarviejo
 - name: abantos
+  code: abantos
 - name: arcones
+  code: arcones
 - name: pinilla
+  code: pinilla
 - name: pradena del rincon
-- name: la muela
+  code: pradena
 - name: cebreros
+  code: cebreros
 - name: piedrahita
+  code: piedrahita
 - name: pedro bernardo
+  code: pbernardo
 - name: fuentemilanos
+  code: fuentemilanos
 - name: covatilla
+  code: covatilla
 - name: lagunilla
+  code: lagunilla
 - name: el raso
+  code: raso
 - name: pitolero
+  code: pitolero

@@ -180,7 +180,7 @@ use UTCtime
 <tr>
    <td>
    <label>
-   <input type="radio" onChange="javascript:change_sounding('{{place.name}}')" name='foo'>
+   <input type="radio" onChange="javascript:change_sounding('{{place.code}}')" name='foo'>
    <span>{{ place.name | capitalize }}</span>
    </label>
    </td>
