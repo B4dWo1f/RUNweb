@@ -13,13 +13,23 @@
   isvector: True
   isexperimental: False
 
-- prop: cape
-  name: CAPE
+- prop: wblmaxmin
+  name: Convergencias
+  isvector: False
+  isexperimental: False
+
+- prop: hglider
+  name: Techo
   isvector: False
   isexperimental: False
 
 - prop: wstar
   name: Térmica
+  isvector: False
+  isexperimental: False
+
+- prop: cape
+  name: CAPE
   isvector: False
   isexperimental: False
 
@@ -42,16 +52,6 @@
   name: Nubosidad alta (%)
   isvector: False
   isexperimental: True
-
-- prop: wblmaxmin
-  name: Convergencias
-  isvector: False
-  isexperimental: False
-
-- prop: hglider
-  name: Techo
-  isvector: False
-  isexperimental: False
 
 - prop: zsfclcl
   name: Base cubierta

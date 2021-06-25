@@ -11,7 +11,7 @@ title: Rasp by Uri and Noel
 
 
 <h2>Dominio</h2>
-<div class='domain_selector' align="center">
+<div class='domain selector' align="center">
 {% for dom in site.data.domains %}
 <button type="button"
         class="button domain {% if dom.code == 'd02'%} active {% else %} inactive {% endif %}"
@@ -24,7 +24,7 @@ title: Rasp by Uri and Noel
 
 
 <h2>Subdominio</h2>
-<div class='domain_selector' align="center">
+<div class='domain selector' align="center">
 {% for dom in site.data.zooms %}
 <button type="button"
         class="button domain {% if dom.code == 'd02'%} active {% else %} inactive {% endif %}"
@@ -37,7 +37,7 @@ title: Rasp by Uri and Noel
 
 
 <h2>Scalar Properties</h2>
-<div class='Sprop_selector'>
+<div class='Sprop selector'>
 {% for prop in site.data.properties %}
 {% if prop.isexperimental != true %}
 <button type="button"
@@ -51,7 +51,7 @@ title: Rasp by Uri and Noel
 </div>
 
 <h2>Experimental</h2>
-<div class='Sprop_selector'>
+<div class='Sprop selector'>
 {% for prop in site.data.properties %}
 {% if prop.isexperimental == true %}
 <button type="button"
@@ -65,7 +65,7 @@ title: Rasp by Uri and Noel
 </div>
 
 <h2>Vector Properties</h2>
-<div class='Vprop_selector'>
+<div class='Vprop selector'>
 {% for prop in site.data.properties %}
 {% if prop.isvector == true %}
 <button type="button"
@@ -135,7 +135,7 @@ title: Rasp by Uri and Noel
 
 
 <!-- <h2>Time</h2> -->
-<div class='hours_selector'>
+<div class='hours selector'>
 {% comment %}
 Hours are build on local timezone, but everything (classes, javascript)
 use UTCtime
@@ -151,7 +151,7 @@ use UTCtime
 
 
 <!-- <h2>Day</h2> -->
-<div class='days_selector' align="center">
+<div class='days selector' align="center">
 <!-- {% capture date0 %} {{'today' | date: "%Y/%m/%d" | jsonify }} {% endcapture %}
 <p>{{date0}}</p>
 -->
