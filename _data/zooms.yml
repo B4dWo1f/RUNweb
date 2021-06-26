@@ -1,6 +1,12 @@
 - code: z0
+  parent: d02
   name: Guadarrama
 - code: z1
+  parent: d02
   name: Gredos
 - code: z2
+  parent: d02
   name: Béjar
+- code: z0
+  parent: d01
+  name: Meseta N

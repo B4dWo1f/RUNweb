@@ -28,8 +28,8 @@ title: Rasp by Uri and Noel
 {% for dom in site.data.zooms %}
 <button type="button"
         class="button domain {% if dom.code == 'd02'%} active {% else %} inactive {% endif %}"
-        id="button_domain_{{ dom.code }}"
-        onclick="javascript:change_subdomain('{{ dom.code }}');">
+        id="button_domain_{{dom.parent}}_{{ dom.code }}"
+        onclick="javascript:change_subdomain('{{ dom.code }}','{{ dom.parent }}');">
 {{ dom.name }}
 </button>
 {% endfor %}

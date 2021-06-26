@@ -31,6 +31,13 @@ var days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'
 var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 // var SCs = ['SC2', 'SC2+1', 'SC4+2', 'SC4+3']
 
+
+var sounding_domains = {
+   {% for sound in site.data.soundings %}
+   '{{sound.code}}':'{{sound.parent}}',
+   {% endfor %}
+}
+
 // console.log('AAAAAAAAAA');
 update_plots();
 // console.log('aaaaaaaaaa');

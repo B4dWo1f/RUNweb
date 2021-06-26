@@ -90,10 +90,10 @@ function update_plots(){
    // Color Bar
    document.getElementById('cbar_layer').src = path+'/'+Sprop+'.png';
    // console.log(Sprop+' '+Vprop);
-   // Sounding
-   if ( current_sounding != null ){
-      document.getElementById('sounding_img').src = path+'/'+hour+'00_sounding_'+current_sounding+'.png';
-   }
+   // // Sounding
+   // if ( current_sounding != null ){
+   //    document.getElementById('sounding_img').src = path+'/'+hour+'00_sounding_'+current_sounding+'.png';
+   // }
    // Terrain
    document.getElementById('terrain_layer').src = path+'/terrain'+Zoom+'.png';
    // console.log('--update_plots');
@@ -115,21 +115,24 @@ function change_domain(x) {
    // console.log('Domain changed');
 }
 
-function change_subdomain(x) {
+function change_subdomain(x,y) {
    //XXX
-   domain = 'd02';
+   domain = y;   // 'd02';
    Zoom = '_'+x;
+   // console.log(domain);
    // console.log(Zoom);
    update_plots();
+   // console.log('updated plots. Changing buttons color');
    var all_domain_buttons = document.getElementsByClassName("button domain");
    // console.log(all_domain_buttons);
    var N = all_domain_buttons.length;
    for (var i = 0; i < N; i++) {
+      // console.log(all_domain_buttons[i]);
       all_domain_buttons[i].className = 'button domain inactive';
       // console.log(all_domain_buttons[i]);
    }
    // console.log('-->'+'button_domain_'+x);
-   document.getElementById('button_domain_'+x).className = 'button domain active';
+   document.getElementById('button_domain_'+domain+'_'+x).className = 'button domain active';
    // console.log('Domain changed');
 }
 
@@ -205,9 +208,17 @@ function zoom(x) {
 }
 
 function change_sounding(x) {
+   // console.log('changing sounding');
    current_sounding = x;
+   // console.log(sounding_domains);
+   // console.log(sounding_domains[current_sounding]);
+   var path_aux = generate_path(folder_root, sounding_domains[current_sounding], year, month, day);
+   // console.log(domain);
+   // console.log(current_sounding);
+   // console.log(path);
    // console.log(path+'/'+hour+'00_sounding_'+current_sounding+'.png');
-   document.getElementById('sounding_img').src = path+'/'+hour+'00_sounding_'+current_sounding+'.png';
+   document.getElementById('sounding_img').src = path_aux+'/'+hour+'00_sounding_'+current_sounding+'.png';
+   // console.log('changed sounding');
 }
 
 
