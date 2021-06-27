@@ -90,10 +90,11 @@ function update_plots(){
    // Color Bar
    document.getElementById('cbar_layer').src = path+'/'+Sprop+'.png';
    // console.log(Sprop+' '+Vprop);
-   // // Sounding
-   // if ( current_sounding != null ){
-   //    document.getElementById('sounding_img').src = path+'/'+hour+'00_sounding_'+current_sounding+'.png';
-   // }
+   // Sounding
+   if ( current_sounding != null ){
+      // document.getElementById('sounding_img').src = path+'/'+hour+'00_sounding_'+current_sounding+'.png';
+      change_sounding(current_sounding)
+   }
    // Terrain
    document.getElementById('terrain_layer').src = path+'/terrain'+Zoom+'.png';
    // console.log('--update_plots');
