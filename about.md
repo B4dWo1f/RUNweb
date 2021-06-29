@@ -20,11 +20,13 @@ Los datos que ofrecemos son calculados mediante el modelo [WRF](https://www2.mmm
 El WRF es un [modelo númerico](https://meteoglosario.aemet.es/es/termino/171_modelo-numerico) que permite calcular propiedades atmosféricas con una gran resolución espacial ¡perfecto para el vuelo libre!
 El WRF es un modelo (muy) complejo y aún estamos lejos de entender todos los cálculos que realiza, pero mi intención es ir documentando todo lo que aprendamos.
 
-Aunque esta nueva instalación sólo lleva activa unas semanas, los días que hemos podido comparar las predicciones con condiciones de vuelo han dado unos resultados espectaculares. ¡¡Parece que **está funcionando muy bien**!!  
-(en la larga lista de tareas pendientes tengo la comparación de nuestra predicción con estaciones meteo y con los vuelos que suba la gente)
+Aunque esta nueva instalación sólo lleva activa un par de meses, los días que hemos podido comparar las predicciones con condiciones de vuelo han dado unos resultados espectaculares. ¡¡Parece que **está funcionando muy bien**!!  
+Durante la liga nacional del Yelmo acertamos la situación de la convergencia que permitió hacer la manga de 200km, así como la formación de calles de nubes a lo largo del camino, y pudimos comprobar en directo la altura del techo a lo largo del recorrido.  
+Donde tenemos ojos (Sierra Norte, valle dl Lozoya...) hemos comprobado en varias ocasiones la formación de las convergencias ¡e incluso de sobre-desarrollos y lluvia que otros modelos no captaron!  
+(en la larga lista de tareas pendientes tengo la comparación de nuestra predicción con estaciones meteo y con los vuelos que suba la gente para que no dependa de que creáis nuestro testimonio).
 
 En un futuro cercano porbaremos otros dominios, añadiremos funcionalidades... ¡muchos planes!
-Dicho esto... es de esperar que cuando hagamos pruebas el servicio se vea interrumpido durante horas/días, pero intentaremos que esté a pleno rendimiento cuando haga falta ;)
+Dicho esto... Por ahora es sistema es bastante estable, pero estamos intentando afinalo para poder incluir un dominio en Pirineos manteniendo los últimos datos disponibles en todo momento, si hacemos pruebas lo haremos intentando no interrumpir el servicio en momentos interesantes para el vuelo.
 
 ## Horarios
 El `GFS` (fuente y base de nuestros cálculos) sirve los datos cada 6 horas, aunque sólo están disponibles unas 3 horas y media después. 
@@ -34,6 +36,9 @@ Esto sucede a las siguientes horas (`z` = UTC):
 - `12:00z`, datos a las `17:35`
 - `18:00z`, datos a las `23:35`  
 
+Hemos conseguido optimizar el sistema para que nos quepan 4 días completos (posiblimente nos quepa un quinto) en cada remesa de datos del GFS.  
+
+<!--
 Por tanto nosotros actualizamos los pronósticos a esas horas. Nombraremos los días respecto al día actual, de forma que hoy es el día 0, mañana es el día 1, pasado el 2, etc.
 
 <table class="schedule_runs">
@@ -56,14 +61,17 @@ Por tanto nosotros actualizamos los pronósticos a esas horas. Nombraremos los d
 
 Con los parámetros actuales cada cálculo de un día completo (13 horas, de `8:00` a `20:00`) tarda unas dos horas y poco, puedes ver la actividad del ordenador [aquí](/system.html). Este tiempo puede cambiar cuando vayamos tocando los distintos parámetros disponibles, así que los horarios también cambiarán...
 Os mantendremos informados ;)
+-->
 
 ## Consejos y sutilezas
 
 ### Nubes y precipitación
 
-El botón "`Cloud fraction`", justo antes del título, superpone nubosidad y precipitación sobre el mapa que se esté mostrando. Esta capa de nubosidad no es toda la nubosidad que pueda desarrollarse durante el día sino que se muestra sólo a partir de un cierto umbral. Lo he preparado para que la cubierta de nubes sea comparable a la de meteoblue.
+El botón "`Nubes y lluvia(1h)`", justo bajo el título, superpone nubosidad y precipitación sobre el mapa que se esté mostrando. Esta capa de nubosidad no es toda la nubosidad que pueda desarrollarse durante el día sino que se muestra sólo a partir de un cierto umbral. Lo he preparado para que la cubierta de nubes sea comparable a la de meteoblue.
 
 <img class="post__img" id="clouds_doc" src="/assets/images/clouds.png"/>
+
+Para entender mejor la nubosidad hay que prstar atención a "Base cubierta/cumulos", y los porcentajes de nubosidad baja, media y alta.
 
 
 ### Suavizado primeras horas.
@@ -77,7 +85,3 @@ Esto no es ideal, pero es una solución de compromiso que no me requiere hacer c
 Aquí un ejemplo de este efecto:
 
 <img class="post__img" id="suavizado_doc" src="/assets/images/suavizado.png"/>
-
-# Notas:
-- La variación en el tiempo de computación se debe a los cambios meteorológicos, en particular el incremento del 6 al 11 de mayo (aprox) se debe al paso de una borrasca y su frente asociado. ¡Será interesante ver estos cambios para distintas condiciones meteorológicas!
-- Por algún motivo es más eficiente corriendo en 26 cores que en los 32 que tiene disponible. A cambio esto nos facilita poder ir pintando los datos según se van calculando (en lugar de esperar a que terminen todos los cálculos para pintar)
