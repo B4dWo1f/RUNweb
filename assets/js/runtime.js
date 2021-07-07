@@ -62,6 +62,8 @@ function update_plots(){
    // Cities
    document.getElementById('cities_layer').src = path+'/cities'+Zoom+'.png';
    document.getElementById('cities_names_layer').src = path+'/cities_names'+Zoom+'.png';
+   // Manga
+   document.getElementById('manga_layer').src = path+'/task'+Zoom+'.png';
    // Peaks
    document.getElementById('peaks_layer').src = path+'/peaks'+Zoom+'.png';
    document.getElementById('peaks_names_layer').src = path+'/peaks_names'+Zoom+'.png';

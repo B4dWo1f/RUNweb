@@ -14,4 +14,4 @@ El promedio se calcula con una media ponderada por tiempo. El peso de los datos 
 
 # Time step distribution
 <img class="post__img cores" src="/assets/images/times.png">
-NOTA: Los time-steps se borran al comienzo de cada run (por lo que durante el periodo entre runs mantiene la información delúltimo run).
+NOTA: Los time-steps se borran al comienzo de cada run (por lo que durante el periodo entre runs mantiene la información del último run).

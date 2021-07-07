@@ -231,6 +231,10 @@ header {
    z-index: 10;
 }
 
+#manga_layer {
+   z-index: 20;
+}
+
 .Oover{
    max-width: var(--img-max-width);
    position: absolute;

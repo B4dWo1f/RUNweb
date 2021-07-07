@@ -105,6 +105,11 @@ title: Rasp by Uri and Noel
 <input type="checkbox"  onChange="javascript:toggleVisibility(['peaks_layer'])" autocomplete="off" name='foo'>
 <span>Cimas</span>
 </label>
+<br>
+<label>
+<input type="checkbox"  onChange="javascript:toggleVisibility(['manga_layer'])" autocomplete="off" name='foo'>
+<span>Manga</span>
+</label>
 
 <input id="SliderOpacity" class="slider_opacity" type="range" min="0" max="100" value="50" oninput="javascript:set_opacity(this.value,['Sprop_layer']);">
 
@@ -119,6 +124,7 @@ title: Rasp by Uri and Noel
    <img class="over"    id="cities_layer"/>
    <img class="over start_hidden"    id="takeoffs_names_layer"/>
    <img class="over start_hidden"    id="cities_names_layer"/>
+   <img class="over start_hidden"    id="manga_layer"/>
    <!-- Scalar -->
    <img class="Sprop_map"  id="Sprop_layer"/>
    <!-- Vector -->
