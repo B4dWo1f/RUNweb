@@ -1,65 +1,78 @@
 - prop: sfcwind
   name: Viento Superficie
+  section: wind
   isvector: True
   isexperimental: False
 
 - prop: blwind
   name: Viento Promedio
+  section: wind
   isvector: True
   isexperimental: False
 
 - prop: bltopwind
   name: Viento Altura
+  section: wind
   isvector: True
   isexperimental: False
 
 - prop: wblmaxmin
   name: Convergencias
+  section: cross
   isvector: False
   isexperimental: False
 
 - prop: hglider
   name: Techo
+  section: cross
   isvector: False
   isexperimental: False
 
 - prop: wstar
   name: Térmica
+  section: cross
   isvector: False
   isexperimental: False
 
 - prop: cape
   name: CAPE
+  section: clouds
   isvector: False
   isexperimental: False
 
 - prop: bldepth
   name: Altura Capa Convectiva
+  section: clouds
   isvector: False
   isexperimental: False
 
 - prop: lowfrac
   name: Nubosidad baja (%)
+  section: clouds
   isvector: False
   isexperimental: True
 
 - prop: midfrac
   name: Nubosidad media (%)
+  section: clouds
   isvector: False
   isexperimental: True
 
 - prop: highfrac
   name: Nubosidad alta (%)
+  section: clouds
   isvector: False
   isexperimental: True
 
 - prop: zsfclcl
   name: Base cubierta
+  section: clouds
   isvector: False
   isexperimental: False
 
 - prop: zblcl
   name: Base cúmulos
+  section: clouds
   isvector: False
   isexperimental: False
 
@@ -67,3 +80,9 @@
   name: Tdif
   isvector: False
   isexperimental: True
+
+- prop: t2m
+  name: Temperatura
+  section: cross
+  isvector: False
+  isexperimental: False

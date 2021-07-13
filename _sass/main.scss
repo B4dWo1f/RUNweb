@@ -34,7 +34,15 @@ body {
 }
 
 a {
-   text-decoration: none;
+   text-decoration: underline;
+   color: black;
+   font-weight: bold;
+}
+
+
+a:hover {
+   background: rgba(0,83,201,0.4);
+   transition: all 200ms ease;
 }
 
 // div {
@@ -88,6 +96,12 @@ header {
    box-shadow: 0 5px 10px rgb(150,150,150);
 }
 
+.navigation_menu a {
+   text-decoration: none;
+   background: none;
+   font-weight: normal;
+}
+
 .navigation_menu a:last-child {
    margin-left: auto;
 }
@@ -101,6 +115,7 @@ header {
    padding: 1rem;
    color: white;
 }
+
 
 // .navigation_button:hover {
 //    background-image: radial-gradient(, green, rgba(255,255,255,0));
@@ -202,7 +217,7 @@ header {
    height:auto;
    z-index: -1;
    opacity: 1;
-
+   // box-shadow: 0 0 30px rgb(150,150,150);
    // max-width: var(--img-max-width);
    // position: absolute;
    // border: 1px solid blue;
