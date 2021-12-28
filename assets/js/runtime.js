@@ -139,9 +139,10 @@ function change_subdomain(x,y) {
    // console.log('Domain changed');
 }
 
-function change_day(x,y) {
+function change_day(x,y,z) {
    day = x.toString().padStart(2, '0');
    month = y.toString().padStart(2, '0');
+   year = z.toString().padStart(4, '0');
    update_plots();
    // console.log('button_day_'+x+','+y);
    var all_day_buttons =  document.getElementsByClassName("button day");

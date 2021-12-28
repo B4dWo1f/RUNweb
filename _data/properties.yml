@@ -86,3 +86,9 @@
   section: cross
   isvector: False
   isexperimental: False
+
+- prop: gust
+  name: Racha (muy exp)
+  section: cross
+  isvector: False
+  isexperimental: True

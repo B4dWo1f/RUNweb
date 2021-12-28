@@ -170,7 +170,7 @@ use UTCtime
 <button type="button"
         class="button day {% if nday == 0 %} active {% else %} inactive {% endif %}"
         id="button_day_{{day | date: '%d'}}"
-        onclick="javascript:change_day({{ day | date: '%d,%m' }});">
+        onclick="javascript:change_day({{ day | date: '%d,%m,%Y' }});">
 {{day| date: "%a %d"}}
 </button>
 {% endfor %}
