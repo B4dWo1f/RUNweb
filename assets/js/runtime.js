@@ -22,6 +22,7 @@ function generate_path(folder_root, domain, year, month, day) {
 }
 
 function generate_filename(h,prop,isvec,extra) {
+   // extra = z0, subdomain appendix
    hour = h.toString().padStart(2, '0');
    if (isvec===true){
       // Vprop = p
@@ -89,6 +90,9 @@ function update_plots(){
    var fname = generate_filename(hour,'rain', false, '');
    // console.log(path+'/'+fname);
    document.getElementById('rain_layer').src = path+'/'+fname;
+   //   // SLP
+   //   var fname = generate_filename(hour,'slp', false, '');
+   //   document.getElementById('slp_layer').src = path+'/'+fname;
    // Color Bar
    document.getElementById('cbar_layer').src = path+'/'+Sprop+'.png';
    // console.log(Sprop+' '+Vprop);
@@ -169,14 +173,14 @@ function change_hour(x) {
 
 function change_Sprop(x) {
    Sprop = x;
-   if ( ["sfcwind", "blwind", "bltopwind"].includes(Sprop) ){
+   if ( ["sfcwind", "blwind", "bltopwind", "wind1500", "wind2000", "wind2500", "wind3000"].includes(Sprop) ){
       Vprop = x;
-      var all_prop_buttons =  document.getElementsByClassName("button vprop");
-      var N = all_prop_buttons.length;
-      for (var i = 0; i < N; i++) {
-         all_prop_buttons[i].className = 'button vprop inactive';
-      }
-      document.getElementById('button_Vprop_'+x).className = 'button vprop active';
+   //    var all_prop_buttons =  document.getElementsByClassName("button vprop");
+   //    var N = all_prop_buttons.length;
+   //    for (var i = 0; i < N; i++) {
+   //       all_prop_buttons[i].className = 'button vprop inactive';
+   //    }
+   //    document.getElementById('button_Vprop_'+x).className = 'button vprop active';
    }
    update_plots();
    var all_prop_buttons =  document.getElementsByClassName("button prop");

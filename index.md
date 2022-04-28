@@ -50,6 +50,7 @@ title: Rasp by Uri and Noel
 {% endfor %}
 </div>
 
+
 <h2>Experimental</h2>
 <div class='Sprop selector'>
 {% for prop in site.data.properties %}
@@ -64,6 +65,8 @@ title: Rasp by Uri and Noel
 {% endfor %}
 </div>
 
+
+<!--
 <h2>Vector Properties</h2>
 <div class='Vprop selector'>
 {% for prop in site.data.properties %}
@@ -77,8 +80,7 @@ title: Rasp by Uri and Noel
 {% endif %}
 {% endfor %}
 </div>
-
-
+-->
 
 
 <div id='plot_title' class="plot_title" align="center">
@@ -89,6 +91,12 @@ title: Rasp by Uri and Noel
 <input type="checkbox"  onChange="javascript:toggleVisibility(['clouds_layer','rain_layer'])" autocomplete="off" name='foo'>
 <span>Nubes y lluvia(1h)</span>
 </label>
+<!--
+<label>
+<input type="checkbox"  onChange="javascript:toggleVisibility(['slp_layer'])" autocomplete="off" name='foo'>
+<span>Presión</span>
+</label>
+-->
 <label>
 <input type="checkbox"  onChange="javascript:toggleVisibility(['takeoffs_names_layer'])" autocomplete="off" name='foo'>
 <span>Despegues</span>
@@ -133,6 +141,7 @@ title: Rasp by Uri and Noel
    <!-- Overlay -->
    <img class="Oover start_hidden" id="clouds_layer"/>
    <img class="Oover start_hidden" id="rain_layer"/>
+   <img class="Oover start_hidden" id="slp_layer"/>
 </div>
 <!-- Color bar -->
 <div class='map_container'>

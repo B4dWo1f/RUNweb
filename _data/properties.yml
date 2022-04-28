@@ -4,6 +4,30 @@
   isvector: True
   isexperimental: False
 
+- prop: wind1500
+  name: Viento 1500
+  section: wind
+  isvector: True
+  isexperimental: False
+
+- prop: wind2000
+  name: Viento 2000
+  section: wind
+  isvector: True
+  isexperimental: False
+
+- prop: wind2500
+  name: Viento 2500
+  section: wind
+  isvector: True
+  isexperimental: False
+
+- prop: wind3000
+  name: Viento 3000
+  section: wind
+  isvector: True
+  isexperimental: False
+
 - prop: blwind
   name: Viento Promedio
   section: wind
@@ -40,11 +64,11 @@
   isvector: False
   isexperimental: False
 
-- prop: bldepth
-  name: Altura Capa Convectiva
-  section: clouds
-  isvector: False
-  isexperimental: False
+# - prop: bldepth
+#   name: Altura Capa Convectiva
+#   section: clouds
+#   isvector: False
+#   isexperimental: False
 
 - prop: lowfrac
   name: Nubosidad baja (%)
