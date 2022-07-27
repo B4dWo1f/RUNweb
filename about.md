@@ -7,6 +7,8 @@ title: About
 Buenas! Somos Oriol y Noel, dos pilotos de la zona centro, del club [Denubeanube](http://www.denubeanube.com/).  
 Este sitio es heredero directo de la instalación del RASP by [DrJack](http://drjack.info) que hizo Oriol... pero de ese sistema sólo queda ya el conocimiento que obtuvimos.
 
+<img class="post__img" id="clouds_doc" src="/assets/images/raspers.jpeg"/>
+
 He hecho una instalación desde cero y re-implemententado (y expandido) los cálculos de propiedades del DrJack, así como desarrollado esta web (que irá mejorando con el tiempo).  
 
 La experiencia previa con el modelo y el conocimiento meteo de Oriol han sido claves para evitar (y resolver) muchos muchos quebraderos de cabeza, y ya se está metiendo en el post-procesado. Esperamos poder exprimir aún más el modelo extrayendo información útil para el vuelo libre.

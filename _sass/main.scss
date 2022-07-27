@@ -455,6 +455,13 @@ header {
    font-size: 0.9rem;
 }
 
+.myvideo {
+   // max-width: var(--img-max-width);
+   width: 100%;
+   height: auto;
+   box-shadow: 0 0 20px rgb(180,180,180);
+}
+
 .cores {
    max-width: var(--img-max-width);
    height: auto;
