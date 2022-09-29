@@ -13,6 +13,7 @@ var Sprop = "sfcwind";
 var Vprop = "sfcwind";
 var Zoom = "";
 var current_sounding = "somosierra";
+var current_meteogram = "somosierra";
 
 var title_prop = {
 {% for prop in site.data.properties %}
@@ -35,6 +36,12 @@ var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto',
 var sounding_domains = {
    {% for sound in site.data.soundings %}
    '{{sound.code}}':'{{sound.parent}}',
+   {% endfor %}
+}
+
+var meteogram_domains = {
+   {% for meteog in site.data.meteograms %}
+   '{{meteog.code}}':'{{meteog.parent}}',
    {% endfor %}
 }
 

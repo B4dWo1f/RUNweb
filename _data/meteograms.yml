@@ -1,0 +1,42 @@
+- name: somosierra
+  parent: d02
+  code: somosierra
+- name: bustarviejo
+  parent: d02
+  code: bustarviejo
+- name: abantos
+  parent: d02
+  code: abantos
+- name: arcones
+  parent: d02
+  code: arcones
+- name: pinilla
+  parent: d02
+  code: pinilla
+- name: pradena del rincon
+  parent: d02
+  code: pradena
+- name: cebreros
+  parent: d02
+  code: cebreros
+- name: piedrahita
+  parent: d02
+  code: piedrahita
+- name: pedro bernardo
+  parent: d02
+  code: pbernardo
+- name: fuentemilanos
+  parent: d02
+  code: fuentemilanos
+- name: covatilla
+  parent: d02
+  code: covatilla
+- name: lagunilla
+  parent: d02
+  code: lagunilla
+- name: el raso
+  parent: d02
+  code: raso
+- name: pitolero
+  parent: d02
+  code: pitolero

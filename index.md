@@ -185,25 +185,23 @@ use UTCtime
 {% endfor %}
 </div>
 
-
-<!-- Soundings -->
-<table class='table_sounding'>
-<tr>
-   <th colspan="2">Curvas de estado <span style='font-size:0.5em;font-weight: normal;'><a id="sounding_link" href='/sounding.html'>(+info)</a></span></th>
-</tr>
-{% for place in site.data.soundings %}
-<tr>
-   <td>
-   <label>
-   <input type="radio" onChange="javascript:change_sounding('{{place.code}}')" name='foo'>
-   <span>{{ place.name | capitalize }}</span>
-   </label>
-   </td>
-   {% if place.name == site.data.soundings[0].name %}
-   <td rowspan="{{site.data.soundings | size}}">
-   <img id="sounding_img">
-   </td>  <!-- Sounding -->
-   {% endif %}
-</tr>
+<!-- Meteograms -->
+<h2>Meteograms and sounding</h2>
+<div class='places selector' align="center">
+{% for place in site.data.meteograms %}
+<button type="button"
+        class="button place {% if place.code == site.data.soundings[0].code %} active {% else %} inactive {% endif %}"
+        id="button_place_{{ place.code }}"
+        onclick="javascript:change_sounding('{{ place.code }}');change_meteogram('{{ place.code }}');">
+{{ place.name | capitalize }}
+</button>
 {% endfor %}
-</table>
+</div>
+
+
+<div class='sounding container'>
+   <img id="sounding_img">
+</div>
+<div class='meteogram container'>
+   <img id="meteogram_img">
+</div>

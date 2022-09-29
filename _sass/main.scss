@@ -369,7 +369,33 @@ header {
    text-transform:capitalize;
 }
 
-#sounding_img {
+#sounding_img, #meteogram_img {
+   max-width: var(--img-max-width);
+   position: static;
+   padding: 0px;
+   left: 0px;
+   top: 0px;
+   width: 100%;
+   height:auto;
+   z-index: -1;
+   opacity:1;
+   // border:2px red solid;
+}
+
+.table_meteogram {
+   max-width: var(--img-max-width);
+   // border:2px red solid;
+}
+
+.table_meteogram th {
+   font-size: 2rem;
+   // border:2px red solid;
+}
+.table_meteogram label {
+   text-transform:capitalize;
+}
+
+#meteogram_img {
    // max-width: var(--img-max-width);
    position: static;
    padding: 0px;
@@ -444,6 +470,10 @@ header {
    text-decoration: none;
 }
 
+#meteogram_link:visited {
+   text-decoration: none;
+}
+
 .post hr {
    width: 80%;
    border: 0;
@@ -507,6 +537,13 @@ header {
 // }
 
 #sounding_dedicated {
+   display: table;
+   margin: 0rem 0rem 0rem 2.2rem;
+   width: 40%;
+   float: right;
+}
+
+#meteogram_dedicated {
    display: table;
    margin: 0rem 0rem 0rem 2.2rem;
    width: 40%;

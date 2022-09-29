@@ -96,6 +96,11 @@ function update_plots(){
    // Color Bar
    document.getElementById('cbar_layer').src = path+'/'+Sprop+'.png';
    // console.log(Sprop+' '+Vprop);
+   // Meteogram
+   if ( current_meteogram != null ){
+      // document.getElementById('meteogram_img').src = path+'/'+hour+'00_meteogram_'+current_meteogram+'.png';
+      change_meteogram(current_meteogram)
+   }
    // Sounding
    if ( current_sounding != null ){
       // document.getElementById('sounding_img').src = path+'/'+hour+'00_sounding_'+current_sounding+'.png';
@@ -215,6 +220,21 @@ function zoom(x) {
    update_plots()
 }
 
+function change_meteogram(x) {
+   // console.log('changing meteogram');
+   current_meteogram = x;
+   // console.log(meteogram_domains);
+   // console.log(meteogram_domains[current_meteogram]);
+   var path_aux = generate_path(folder_root, meteogram_domains[current_meteogram], year, month, day);
+   // console.log(domain);
+   // console.log(current_meteogram);
+   // console.log(path);
+   // console.log(path+'/'+hour+'00_meteogram_'+current_meteogram+'.png');
+   document.getElementById('meteogram_img').src = path_aux+'/'+'meteogram_'+current_meteogram+'.png';
+   // console.log('changed meteogram');
+   change_place(x);
+}
+
 function change_sounding(x) {
    // console.log('changing sounding');
    current_sounding = x;
@@ -227,8 +247,21 @@ function change_sounding(x) {
    // console.log(path+'/'+hour+'00_sounding_'+current_sounding+'.png');
    document.getElementById('sounding_img').src = path_aux+'/'+hour+'00_sounding_'+current_sounding+'.png';
    // console.log('changed sounding');
+   change_place(x);
 }
 
+function change_place(x) {
+   console.log('Changing places');
+   console.log(x);
+   var all_place_buttons = document.getElementsByClassName("button place");
+   var N = all_place_buttons.length;
+   for (var i = 0; i < N; i++) {
+      all_place_buttons[i].className = 'button place inactive';
+      // console.log(all_domain_buttons[i]);
+   }
+   // console.log('-->'+'button_domain_'+x);
+   document.getElementById('button_place_'+x).className = 'button place active';
+}
 
 function toggleVisibility(ids) {
    var ids_length = ids.length;
