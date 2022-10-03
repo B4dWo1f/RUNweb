@@ -40,3 +40,6 @@
 - name: pitolero
   parent: d02
   code: pitolero
+- name: la salceda
+  parent: d02
+  code: salceda
