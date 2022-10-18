@@ -1,5 +1,7 @@
 - name: Pronósticos
   link: /
+- name: Frentes
+  link: /frentes.html
 - name: About
   link: /about.html
 - name: Propiedades
