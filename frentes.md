@@ -1,14 +1,15 @@
 ---
 layout: posts
-title: Webcams
+title: GFS a 14 días
 ---
 
-# GFS Model!
-GFS forecast for the next 15 days.
+# GFS Model
+Pronóstico del modelo GFS a 14 días.
 
 
-El proceso no está automatizado aún, pero lo iré actualizando a mano una vez al día (casi todos los días).
+
+Si no se te reproduce el vídeo pincha [AQUÍ](/frentes_mac.html). (Formato más pesado).
 
 <video class="post__img myvideo" controls autoplay>
-  <source src="/assets/images/frontogenesis.mp4" type="video/mp4">
+  <source src="/assets/images/Spain6_1/frontogenesis.webm" type="video/mp4">
 </video>

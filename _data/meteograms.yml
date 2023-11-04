@@ -43,3 +43,6 @@
 - name: la salceda
   parent: d02
   code: salceda
+- name: Navalafuente
+  parent: d02
+  code: nava

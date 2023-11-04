@@ -66,6 +66,18 @@ title: Rasp by Uri and Noel
 </div>
 
 
+
+<!--
+{% for prop in site.data.properties %}
+{% if prop.section == 'clouds' and prop.isexperimental == true %}
+<label>
+<input type="checkbox"  onChange="javascript:change_Sprop('{{prop.prop}}');" autocomplete="off" name='foo' checked>
+<span>{{prop.name}}</span>
+</label>
+{% endif %}
+{% endfor %}
+-->
+
 <!--
 <h2>Vector Properties</h2>
 <div class='Vprop selector'>
@@ -88,7 +100,7 @@ title: Rasp by Uri and Noel
 </div>
 
 <label>
-<input type="checkbox"  onChange="javascript:toggleVisibility(['clouds_layer','rain_layer'])" autocomplete="off" name='foo'>
+<input type="checkbox"  onChange="javascript:toggleVisibility(['clouds_layer','rain_layer'])" autocomplete="off" name='foo' checked>
 <span>Nubes y lluvia(1h)</span>
 </label>
 <!--
@@ -139,8 +151,8 @@ title: Rasp by Uri and Noel
    <img class="Vprop_map"  id="Vprop_layer"/>
    <img class="VBprop_map" id="VBprop_layer"/>
    <!-- Overlay -->
-   <img class="Oover start_hidden" id="clouds_layer"/>
-   <img class="Oover start_hidden" id="rain_layer"/>
+   <img class="Oover" id="clouds_layer" style="visibility:visible;"/>
+   <img class="Oover" id="rain_layer"   style="visibility:visible;"/>
    <img class="Oover start_hidden" id="slp_layer"/>
 </div>
 <!-- Color bar -->
@@ -188,7 +200,8 @@ use UTCtime
 <!-- Meteograms -->
 <h2>Meteograms and sounding</h2>
 <div class='places selector' align="center">
-{% for place in site.data.meteograms %}
+{% assign num_places = site.data.meteograms.size | minus: 1 %}
+{% for place in site.data.meteograms limit:num_places %}
 <button type="button"
         class="button place {% if place.code == site.data.soundings[0].code %} active {% else %} inactive {% endif %}"
         id="button_place_{{ place.code }}"
@@ -196,6 +209,13 @@ use UTCtime
 {{ place.name | capitalize }}
 </button>
 {% endfor %}
+{% assign narnia = site.data.meteograms | last %}
+<button type="button"
+        id="button_place_{{ narnia.code }}"
+        class="secret"
+        onclick="javascript:change_sounding('{{ narnia.code }}');change_meteogram('{{ narnia.code }}');">
+.
+</button>
 </div>
 
 

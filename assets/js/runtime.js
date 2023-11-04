@@ -251,8 +251,7 @@ function change_sounding(x) {
 }
 
 function change_place(x) {
-   console.log('Changing places');
-   console.log(x);
+   console.log('Changing places ('+x+')');
    var all_place_buttons = document.getElementsByClassName("button place");
    var N = all_place_buttons.length;
    for (var i = 0; i < N; i++) {
@@ -261,6 +260,10 @@ function change_place(x) {
    }
    // console.log('-->'+'button_domain_'+x);
    document.getElementById('button_place_'+x).className = 'button place active';
+   if (document.getElementById('button_place_'+x).id == 'button_place_nava') {
+      console.log('Changing '+'button_place_'+x+' class to secret');
+      document.getElementById('button_place_'+x).className = 'secret';
+   }
 }
 
 function toggleVisibility(ids) {

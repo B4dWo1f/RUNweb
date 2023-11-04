@@ -8,7 +8,7 @@ Técnicamente esto no es una pregunta… pero vale…
 Efectivamente el proyecto es tan grande y quedan tantas cosas por hacer que de momento estamos más centrados en mejorar las predicciones que en hacer dibujos más bonitos.
 
 En el largo plazo tenemos la idea de montar un GIS, pero las soluciones fáciles (servicios on-line), no permiten mantener todo el control que queremos sobre los datos.
-Si alguien quiere contribuir estaremos muy agradecidos, por mi pare sólo tengo tres requisitos para pasar a un GIS propiamente dicho
+Si alguien quiere contribuir estaremos muy agradecidos, por mi parte sólo tengo tres requisitos para pasar a un GIS propiamente dicho
 - Eficiente (La salida del WRF pesa unos 200MB por hora de pronóstico, hay que poder mover los datos lo suficientemente rápido)
 - Control de los mapas de colores y las escalas. Nada de límites automáticos, ni de transiciones suaves de colores, por muy bonitos que sean los mapas. Queremos ser capaces de transmitir información cuantitativa en la imagen.
 - Líneas de flujo (en contraste a windbarbs). Al menos a ciertas escalas las líneas de flujo transmiten mejor la situación del viento y en particular hace las convergencias mucho más visibles.
