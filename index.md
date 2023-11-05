@@ -216,6 +216,13 @@ use UTCtime
         onclick="javascript:change_sounding('{{ narnia.code }}');change_meteogram('{{ narnia.code }}');">
 .
 </button>
+
+<p>
+{% raw %}
+*(6km)
+{% endraw %}
+</p>
+
 </div>
 
 

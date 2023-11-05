@@ -13,7 +13,7 @@
 - name: pinilla
   parent: d02
   code: pinilla
-- name: pradena del rincon
+- name: Prádena del Rincón
   parent: d02
   code: pradena
 - name: cebreros
@@ -22,19 +22,19 @@
 - name: piedrahita
   parent: d02
   code: piedrahita
-- name: pedro bernardo
+- name: Pedro Bernardo
   parent: d02
   code: pbernardo
-- name: fuentemilanos
+- name: Fuentemilanos
   parent: d02
   code: fuentemilanos
-- name: covatilla
+- name: Covatilla
   parent: d02
   code: covatilla
-- name: lagunilla
+- name: Lagunilla
   parent: d02
   code: lagunilla
-- name: el raso
+- name: el Raso
   parent: d02
   code: raso
 - name: pitolero
@@ -43,6 +43,12 @@
 - name: la salceda
   parent: d02
   code: salceda
+- name: Àger*
+  parent: d01
+  code: ager
+- name: Castejón de Sos*
+  parent: d01
+  code: castejon
 - name: Navalafuente
   parent: d02
   code: nava
