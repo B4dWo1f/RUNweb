@@ -76,6 +76,7 @@ El botón "`Nubes y lluvia(1h)`", justo bajo el título, superpone nubosidad y p
 Para entender mejor la nubosidad hay que prstar atención a "Base cubierta/cumulos", y los porcentajes de nubosidad baja, media y alta.
 
 
+<!--
 ### Suavizado primeras horas.
 
 Las primeras horas del cálculo a penas modifican los datos del GFS. Recomiendan descartar las primeras 1-3 horas de cálculo. He programado todo de tal forma que los datos se vayan pintando según se calculan en lugar de esperar a que todo el periodo esté calculado, esto tiene el inconveniente de que meter excepciones a mano es tedioso, por lo que he optado por hacer lo siguiente.
@@ -87,3 +88,4 @@ Esto no es ideal, pero es una solución de compromiso que no me requiere hacer c
 Aquí un ejemplo de este efecto:
 
 <img class="post__img" id="suavizado_doc" src="/assets/images/suavizado.png"/>
+-->

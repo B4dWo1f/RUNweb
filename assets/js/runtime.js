@@ -187,6 +187,13 @@ function change_Sprop(x) {
    //    }
    //    document.getElementById('button_Vprop_'+x).className = 'button vprop active';
    }
+   // Show/hide warning for clouds
+   if (Sprop.includes("frac")) {
+      cloudParagraph.style.display = "block"; // "inline" "inline-block"
+   } else {
+      cloudParagraph.style.display = "none";
+   }
+   // -------------
    update_plots();
    var all_prop_buttons =  document.getElementsByClassName("button prop");
    var N = all_prop_buttons.length;

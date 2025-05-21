@@ -43,12 +43,27 @@
 - name: la salceda
   parent: d02
   code: salceda
+- name: Pegalajar*
+  parent: d01
+  code: pegalajar
 - name: Àger*
   parent: d01
   code: ager
 - name: Castejón de Sos*
   parent: d01
   code: castejon
+- name: Gata*
+  parent: d01
+  code: gata
+- name: Yelmo*
+  parent: d01
+  code: yelmo
+- name: Potes*
+  parent: d01
+  code: potes
+- name: Zarzacapilla*
+  parent: d01
+  code: zarza
 - name: Navalafuente
   parent: d02
   code: nava

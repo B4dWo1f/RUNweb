@@ -95,7 +95,7 @@ La capa de nubosidad no es toda la nubosidad que pueda desarrollarse durante el 
 
 <img class="post__img" id="clouds_doc" src="/assets/images/clouds.png"/>
 
-Ahora la sección nubes bajas/medias/altas permite ver el porcentaje de cada tipo de nubes (pronto podremos superponer las 3 a la vez).
+Ahora la sección nubes bajas/medias/altas permite ver el porcentaje de cada tipo de nubes (cuando saque un rato para hacerlo, podremos superponer las 3 a la vez). Es importante subir la opacidad al 100% para poder ver bien estas capas, pues el mapa de color va de *transparente* a rojo/azul/verde.
 
 La lluvia que presentamos es la lluvia acumulada en la hora previa. Es decir, la lluvia presentada para un día a las 15:00 será la lluvia caída entre las 14:00 y las 15:00 de ese día. Este es el standard meteorológico para poder comparar la predicción con estaciones meteorológicas.
 
