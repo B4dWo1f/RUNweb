@@ -1,15 +1,15 @@
-- code: z0
+- code: zguadarrama
   parent: d02
   name: Guadarrama
-- code: z1
+- code: zgredos
   parent: d02
   name: Gredos
-- code: z2
+- code: zbejar
   parent: d02
   name: Béjar
-- code: z0
+- code: zmeseta
   parent: d01
   name: Meseta N
-- code: z1
+- code: zager
   parent: d01
   name: Ager

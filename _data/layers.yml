@@ -1,0 +1,10 @@
+- ids: ['clouds_layer','rain_layer']
+  label: Nubes y lluvia(1h)
+- ids: ['takeoffs_names_layer']
+  label: Despegues
+- ids: ['city_names_layer']
+  label: Ciudades
+- ids: ['roads_layer']
+  label: Carreteras
+- ids: ['peaks_layer']
+  label: Cimas

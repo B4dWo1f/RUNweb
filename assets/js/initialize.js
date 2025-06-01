@@ -1,160 +1,345 @@
 ---
 ---
 
-var folder_root = "{{site.data.runtime[0].plotsfolder}}";
+class RunPlots {
+   constructor(config) {
+      this.title_prop = config.title_prop || {};
+      this.sounding_domains = config.sounding_domains || {};
+      this.meteogram_domains = config.meteogram_domains || {};
+      this.folder_root = config.folder_root;
+      this.UTCshift = config.UTCshift;
+      this.domain = config.domain;
+      this.Sprop = config.Sprop || "sfcwind";
+      this.Vprop = config.Vprop || "sfcwind";
+      this.Zoom = config.Zoom || "";
+      this.current_sounding = config.current_sounding || null;
+      this.current_meteogram = config.current_meteogram || null;
 
-var UTCshift = {{ 'now' | date: "%z" | divided_by: 100 }};
-var year = {{ 'now' | date: "%Y" }};
-var month = {{ 'now' | date: '%m' }};
-var day = {{ 'now' | date: '%d' }};
-var hour = {{site.data.runtime[0].start_hour}} - UTCshift;
-var domain = "{{site.data.runtime[0].start_domain}}";
-var Sprop = "sfcwind";
-var Vprop = "sfcwind";
-var Zoom = "";
-var current_sounding = "somosierra";
-var current_meteogram = "somosierra";
+      // Current date
+      this.year = config.year;
+      this.month = config.month;
+      this.day = config.day;
+      this.hour = config.hour;
+      // Clouds layers
+      this.experimentalMap = {
+         low_clouds: "lowcloud_layer",
+         mid_clouds: "midcloud_layer",
+         high_clouds: "highcloud_layer"
+      };
 
-var title_prop = {
-{% for prop in site.data.properties %}
-"{{prop.prop}}": "{{prop.name}}",
-{% endfor %}
-};
+   }
 
-// var path = folder_root+'/'+domain+'/'+year+'/'+month+'/'+day ;
-// console.log(path);
+   getPathBase(domainOverride = "") {
+      const domain = domainOverride || this.domain;
+      return `${this.folder_root}/${domain}`;
+   }
+
+   getPathDaily(domainOverride = "") {
+      const domain = domainOverride || this.domain;
+      const year = this.year.toString().padStart(4, "0");
+      const month = this.month.toString().padStart(2, "0");
+      const day = this.day.toString().padStart(2, "0");
+      return `${this.folder_root}/${domain}/${year}/${month}/${day}`;
+      // return `${this.getPathBase()}/${this.year}/${String(this.month).padStart(2, '0')}/${String(this.day).padStart(2, '0')}`;
+   }
+
+   generateFilename(h, prop, isvec, extra = "", skipzoom=false) {
+      const hourStr = h.toString().padStart(2, '0');
+      const fname = isvec
+         ? `${hourStr}00_${prop}${extra}`
+         : `${hourStr}00_${prop}`;
+      const suffix = skipzoom ? "" : this.Zoom;
+      return `${fname}${suffix}.webp`;
+   }
+ 
+   updatePlots() {
+      const path_base  = this.getPathBase();
+      const path_daily = this.getPathDaily();
+      // const hourUTC      = Number(this.hour);
+      // const hourLocal    = hourUTC + this.UTCshift;
 
 
-//var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-// var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      // Update title
+      document.getElementById('plot_title').innerHTML = this.generateTitle();
 
-var days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
-var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-// var SCs = ['SC2', 'SC2+1', 'SC4+2', 'SC4+3']
+      // Helper for image src update
+      const set = (id, path, file) => {
+         const el = document.getElementById(id);
+         if (el) el.src = path + '/' + file;
+      };
 
+      // Common layers
+      for (const base of ['rivers','roads','ccaa','takeoffs','takeoffs_names','cities','city_names','peaks','peaks_names','terrain']) {
+         set(`${base}_layer`, path_base, base+this.Zoom+'.webp');
+      }
 
-var sounding_domains = {
-   {% for sound in site.data.soundings %}
-   '{{sound.code}}':'{{sound.parent}}',
-   {% endfor %}
+      // Scalar
+      set('Sprop_layer', path_daily, this.generateFilename(this.hour, this.Sprop, false));
+
+      // Vector
+      set('Vprop_layer', path_daily, this.generateFilename(this.hour, this.Vprop, true, '_vec'));
+
+      // Vector barbs (only if zoomed)
+      if (this.Zoom !== '') {
+         set('VBprop_layer', path_daily, this.generateFilename(this.hour, this.Vprop, true, `_barb`));
+      } else {
+         const vb = document.getElementById('VBprop_layer');
+         if (vb) vb.src = '';
+      }
+
+      // Other diagnostics
+      set('clouds_layer', path_daily, this.generateFilename(this.hour, 'blcloudpct', false));
+      set('rain_layer', path_daily, this.generateFilename(this.hour, 'rain', false));
+      set('cbar_layer', path_base, `${this.Sprop}.webp`);
+
+      // Testing
+      set('lowcloud_layer', path_daily, this.generateFilename(this.hour, 'lowfrac', false));
+      set('midcloud_layer', path_daily, this.generateFilename(this.hour, 'midfrac', false));
+      set('highcloud_layer', path_daily, this.generateFilename(this.hour, 'highfrac', false));
+
+      // Sounding & meteogram
+      // if (this.current_meteogram) this.changeMeteogram(this.current_meteogram);
+      // if (this.current_sounding) this.changeSounding(this.current_sounding);
+      this.changeSounding(this.current_sounding);
+      this.changeMeteogram(this.current_meteogram);
+
+   }
+
+   generateTitle() {
+      // Add whatever logic you had before
+      const title = this.title_prop?.[this.Sprop] || this.Sprop;
+      const monthName = getMonthName(this.month);
+      const dayStr = String(this.day).padStart(2, '0');
+      const hourLocal = Number(this.hour) + Number(this.UTCshift);
+      return `<h1>${title}<br>${dayStr}/${monthName} ${hourLocal}:00</h1>`;
+   }
+
+   // Change hour
+   changeHour(newHour) {
+      this.hour = newHour;
+
+      this.updatePlots();
+      this.setActiveButton("button hour", "button_hour_", this.hour);
+   }
+
+   changeDay(day, month, year) {
+      this.day = day.toString().padStart(2, '0');
+      this.month = month.toString().padStart(2, '0');
+      this.year = year.toString().padStart(4, '0');
+
+      this.updatePlots();
+      this.setActiveButton("button day", "button_day_", this.day);
+   }
+
+   changeDomain(domainCode) {
+      this.domain = domainCode;
+      this.Zoom = "";  // Reset zoom on domain change
+
+      this.updatePlots();
+
+      // Deactivate all domain and subdomain buttons
+      const allButtons = document.getElementsByClassName("button domain");
+      for (let btn of allButtons) {
+         btn.className = "button domain inactive";
+      }
+
+      // Activate selected domain button
+      const domainBtn = document.getElementById(`button_domain_${domainCode}`);
+      if (domainBtn) {
+         domainBtn.className = "button domain active";
+      } else {
+         console.warn(`Domain button not found: button_domain_${domainCode}`);
+      }
+   }
+
+   changeSubdomain(subdomainCode, parentDomain) {
+      this.domain = parentDomain;
+      this.Zoom = `_${subdomainCode}`;
+
+      this.updatePlots();
+
+      // Deactivate all domain/subdomain buttons
+      const allButtons = document.getElementsByClassName("button domain");
+      for (let btn of allButtons) {
+         btn.className = "button domain inactive";
+      }
+
+      const btnId = `button_domain_${parentDomain}_${subdomainCode}`;
+      const subdomainBtn = document.getElementById(btnId);
+      if (subdomainBtn) {
+         subdomainBtn.className = "button domain active";
+      } else {
+         console.warn(`Subdomain button not found: ${btnId}`);
+      }
+   }
+
+   changeSprop(prop) {
+      // Disable Clouds layer
+      const buttons = document.getElementById('mybutton');
+      const checkboxes = document.querySelectorAll(".clouds_button");
+      checkboxes.forEach(cb => cb.checked = false);
+      for (const [key, lid] of Object.entries(this.experimentalMap)) {
+         const layer = document.getElementById(lid);
+         if (layer) {
+            layer.style.visibility = "hidden";
+         }
+         // const btn = document.getElementById(`button_exp_${key}`);
+         // if (btn) {
+         //    btn.className = "button prop inactive";
+         // }
+      }
+      // remove Sprop layer
+      const slayer = document.getElementById('Sprop_layer');
+      slayer.style.visibility = "visible";
+
+      this.Sprop = prop;
+
+      // If scalar is a wind variable, update Vprop to match
+      const windProps = ["sfcwind", "blwind", "bltopwind", "wind1500", "wind2000", "wind2500", "wind3000"];
+      if (windProps.includes(this.Sprop)) {
+         this.Vprop = prop;
+      }
+
+      // // Show/hide cloud warning
+      // const cloudWarning = document.getElementById("cloudParagraph");
+      // if (cloudWarning) {
+      //    cloudWarning.style.display = this.Sprop.includes("frac") ? "block" : "none";
+      // }
+
+      // Update plots
+      this.updatePlots();
+      // Update button states
+      this.setActiveButton("button prop", `button_Sprop_`, this.Sprop);
+   }
+
+//   changeVprop(prop) {
+//      this.Vprop = prop;
+//      this.updatePlots();
+//   }
+//
+//   changeZoom(z) {
+//      this.Zoom = z;
+//      this.updatePlots();
+//   }
+
+   changeMeteogram(code) {
+      this.current_meteogram = code;
+      const domain = this.meteogram_domains?.[code] || this.domain;
+      const path_daily = this.getPathDaily(domain);
+      // const path_daily = this.getPathDaily();
+      if (!code) return;
+      const fname = `meteogram_${code}.webp`;
+      const img = document.getElementById("meteogram_img");
+      if (img) img.src = `${path_daily}/${fname}`;
+      this.setActiveButton("button place", "button_place_", this.current_meteogram);
+   }
+
+   changeSounding(code) {
+      this.current_sounding = code;
+      const domain = this.sounding_domains?.[code] || this.domain;
+      const path_daily = this.getPathDaily(domain);
+      // const path_daily = this.getPathDaily();
+      if (!code) return;
+      const fname = this.generateFilename(this.hour, `sounding_${code}`, false, "", true);
+      const img = document.getElementById("sounding_img");
+      if (img) img.src = `${path_daily}/${fname}`;
+      this.setActiveButton("button place", "button_place_", this.current_sounding);
+   }
+
+   setActiveButton(className, idPrefix, value) {
+      const buttons = document.getElementsByClassName(className);
+      for (let btn of buttons) {
+         btn.className = className + " inactive";
+      }
+      const activeId = `${idPrefix}${value}`;
+      const activeBtn = document.getElementById(activeId);
+      if (activeBtn) {
+         activeBtn.className = className + " active";
+      } else {
+         console.warn(`Button not found: ${activeId}`);
+      }
+   }
+
+   toggleSpecialVisibility(id, prop) {
+      // remove Sprop layer
+      const slayer = document.getElementById('Sprop_layer');
+      slayer.style.visibility = "hidden";
+      
+      const el = document.getElementById(id);
+      const path_daily = this.getPathDaily();
+      const fname = this.generateFilename(this.hour, prop, false);
+      el.src = path_daily + '/' + fname;
+      const isVisible = getComputedStyle(el).visibility === "visible";
+      el.style.visibility = isVisible ? "hidden" : "visible";
+      if (el) el.style.opacity = 1;
+      //    if (!el) {
+      //       console.warn(`Element not found: ${id}`);
+      //       return;
+      //    }
+   }
+
+   toggleVisibility(ids) {
+      ids.forEach(id => {
+         const el = document.getElementById(id);
+         if (!el) {
+            console.warn(`Element not found: ${id}`);
+            return;
+         }
+         const isVisible = getComputedStyle(el).visibility === "visible";
+         el.style.visibility = isVisible ? "hidden" : "visible";
+      });
+   }
+
+   setOpacity(value, layers) {
+      const opacity = value / 100;
+      for (const id of layers) {
+         const el = document.getElementById(id);
+         if (el) el.style.opacity = opacity;
+         else console.warn(`Layer not found: ${id}`);
+      }
+   }
+
 }
 
-var meteogram_domains = {
-   {% for meteog in site.data.meteograms %}
-   '{{meteog.code}}':'{{meteog.parent}}',
-   {% endfor %}
+function getMonthName(monthNumber) {
+   // monthNumber is 1-based (1 = January)
+   const date = new Date(2000, monthNumber - 1);  // Any year is fine
+   return date.toLocaleString('es-ES', { month: 'long' });
 }
 
-// console.log('AAAAAAAAAA');
-update_plots();
-// console.log('aaaaaaaaaa');
+
+window.Run = new RunPlots({
+   title_prop: {
+      {% for prop in site.data.properties %}
+      "{{ prop.prop }}": "{{ prop.name }}",
+      {% endfor %}
+   },
+   sounding_domains: {
+      {% for sound in site.data.soundings %}
+      '{{sound.code}}':'{{sound.parent}}',
+      {% endfor %}
+   },
+   meteogram_domains: {
+      {% for meteog in site.data.meteograms %}
+      '{{meteog.code}}':'{{meteog.parent}}',
+      {% endfor %}
+   },
+   folder_root : "{{ site.data.runtime[0].plotsfolder }}",
+   UTCshift    : {{ 'now' | date: '%z' | divided_by: 100 }},
+   year        : {{ 'now' | date: '%Y' }},
+   month       : {{ 'now' | date: '%m' }},
+   day         : {{ 'now' | date: '%d' }},
+   {% assign UTCshift = 'now' | date: "%z" | divided_by: 100 %}
+   {% assign start_hour_utc = site.data.runtime[0].start_hour | minus: UTCshift %}
+   hour: {{ start_hour_utc }},
+   domain: "{{ site.data.runtime[0].start_domain }}",
+   Sprop: "sfcwind",
+   Vprop: "sfcwind",
+   Zoom: "",
+   current_meteogram: "somosierra",
+   current_sounding: "somosierra"
+});
 
 
-// var today = new Date();
-// var language = 'es';
-// var UTCshift = today.getTimezoneOffset() / 60;
-// var d = today.getDate();
-// var dw = days[ today.getDay() ];
-// var m = today.getMonth() + 1;
-// var my = months[ today.getMonth() ];
-// var y = today.getFullYear();
-// //var folder = '/var/www/html/RASP/data/PLOTS';
-// var folder = 'data/PLOTS';
-// 
-// /* Global variables */
-// var sc = 'SC2';
-// var domain = 'w2';
-// var Oprop = null;
-// var Sprop = 'sfcwind';
-// var Vprop = 'sfcwind';
-// var hour = 14;
-// var Ndays = 4;
-// var Nhours = 12;  // 13 for CES(summer);  12 for CET(winter)
-// var hour0 = 8;
-// var sounding = null;
-// 
-// /* State variables */
-// var Opts_menu = false;
-// var Opts_minx = 100;
+Run.updatePlots();
 
-//  // Useful aliases
-//  var plot_title = document.getElementById("Title");
-//  var TER_layer = document.getElementById('terrain_layer')
-//  var GND_layer = document.getElementById('gnd_layer')
-//  var CCA_layer = document.getElementById('ccaa_layer')
-//  // var TMA_layer = document.getElementById('TMA_layer')
-//  var RIV_layer = document.getElementById('rivers_layer')
-//  var ROA_layer = document.getElementById('roads_layer')
-//  var TAK_layer = document.getElementById('takeoffs_layer')
-//  var NAM_layer = document.getElementById('names_layer')
-
-//  // var MAN_layer = document.getElementById('manga_layer')
-//  // data
-//  var S_layer = document.getElementById('scalar_layer')
-//  var V_layer = document.getElementById('vector_layer')
-//  var C_layer = document.getElementById('clouds_layer')
-//  var R_layer = document.getElementById('rain_layer')
-//  var P_layer = document.getElementById('press_layer')
-//  var CB_layer = document.getElementById('cbar_layer')
-//  var CB_R_layer = document.getElementById('rain_cbar_layer')
-
-
-//   // ----  Default values for initial load ----
-//   update_plot_title(dw,d,Sprop,hour)
-//   TER_layer.src = get_folder(folder,domain,sc)+'/terrain.png';
-//   GND_layer.src = get_folder(folder,domain,sc)+'/terrain1.png';
-//   CCA_layer.src = get_folder(folder,domain,sc)+'/ccaa.png';
-//   // TMA_layer.src = get_folder(folder,domain,sc)+'/TMA.png';
-//   RIV_layer.src = get_folder(folder,domain,sc)+'/rivers.png';
-//   ROA_layer.src = get_folder(folder,domain,sc)+'/roads.png';
-//   TAK_layer.src = get_folder(folder,domain,sc)+'/takeoffs.png';
-//   NAM_layer.src = get_folder(folder,domain,sc)+'/names.png';
-//   CIT_layer.src = get_folder(folder,domain,sc)+'/cities.png';
-//   // MAN_layer.src = get_folder(folder,domain,sc)+'/manga.png';
-//   // meteo
-//   S_layer.src = get_filename(folder,domain,sc,hour,UTCshift,Sprop,false);
-//   V_layer.src = get_filename(folder,domain,sc,hour,UTCshift,Vprop,true);
-//   // special layers
-//   C_layer.src  = get_filename(folder,domain,sc,hour,UTCshift,'blcloudpct',false);
-//   R_layer.src  = get_filename(folder,domain,sc,hour,UTCshift,'rain1',false);
-//   P_layer.src  = get_filename(folder,domain,sc,hour,UTCshift,'mslpress',false);
-//   CB_layer.src = folder+'/'+Sprop+'.png';
-//   CB_R_layer.src = folder+'/'+'rain1.png';
-//   
-//   document.getElementById("days").innerHTML = generate_days();
-//   
-//   document.getElementById("hours").innerHTML = generate_hours();
-//   
-//   function SetLanguage() {
-//      var lang = getCookie('lang');
-//      if (lang == null) {   // cookie doesn't exist
-//         language = 'es';
-//       }
-//       else {               // cookie does exist
-//          language = lang;
-//       }
-//       translate(language);
-//   }
-//   
-//   function getCookie(name) {
-//       var dc = document.cookie;
-//       var prefix = name + "=";
-//       var begin = dc.indexOf("; " + prefix);
-//       if (begin == -1) {
-//           begin = dc.indexOf(prefix);
-//           if (begin != 0) return null;
-//       }
-//       else
-//       {
-//           begin += 2;
-//           var end = document.cookie.indexOf(";", begin);
-//           if (end == -1) {
-//           end = dc.length;
-//           }
-//       }
-//       // because unescape has been deprecated, replaced with decodeURI
-//       //return unescape(dc.substring(begin + prefix.length, end));
-//       return decodeURI(dc.substring(begin + prefix.length, end));
-//   }
-//   
-//   var language = SetLanguage()

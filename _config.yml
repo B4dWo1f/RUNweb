@@ -1,2 +1,11 @@
 # Server Config options
 livereload: true     # You no longer need to include --livereload
+
+defaults:
+  -
+    scope:
+      path: "assets/js"
+      ext: "js.liquid"
+    values:
+      permalink: "/assets/js/:basename.js"
+

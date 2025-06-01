@@ -1,6 +1,6 @@
-- plotsfolder: assets/images/Spain6_1
+- plotsfolder: /assets/images/Spain6_1
   hourstart: 9
   hourend: 21
   Ndays: 5
   start_domain: d02
-  start_hour: 14
+  start_hour: 14  # Local time

@@ -1,7 +1,7 @@
 - name: Pronósticos
   link: /
-# - name: Observaciones
-#   link: /observaciones.html
+- name: Observaciones
+  link: /observaciones.html
 - name: Frentes
   link: /frentes.html
 - name: About

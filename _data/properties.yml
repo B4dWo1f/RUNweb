@@ -74,17 +74,20 @@
   name: Nubosidad baja (%)
   section: clouds
   isvector: False
+  id: ['lowcloud_layer']
   isexperimental: True
 
 - prop: midfrac
   name: Nubosidad media (%)
   section: clouds
+  id: ['midcloud_layer']
   isvector: False
   isexperimental: True
 
 - prop: highfrac
   name: Nubosidad alta (%)
   section: clouds
+  id: ['highcloud_layer']
   isvector: False
   isexperimental: True
 
@@ -100,19 +103,19 @@
   isvector: False
   isexperimental: False
 
-- prop: tdif
-  name: Tdif
-  isvector: False
-  isexperimental: True
-
 - prop: t2m
   name: Temperatura
   section: cross
   isvector: False
   isexperimental: False
 
-- prop: gust
-  name: Racha (muy exp)
-  section: cross
-  isvector: False
-  isexperimental: True
+# - prop: tdif
+#   name: Tdif
+#   isvector: False
+#   isexperimental: True
+
+# - prop: gust
+#   name: Racha (muy exp)
+#   section: cross
+#   isvector: False
+#   isexperimental: True

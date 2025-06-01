@@ -686,3 +686,25 @@ footer {
 //    background-color: rgba(65,165,234);
 //    cursor: pointer;
 // }
+
+
+/* Add to your CSS file or <style> section */
+.sidebar {
+  display: block;
+  min-width: 200px;
+  background: #f4f4f4;
+  padding: 1rem;
+  border-radius: 8px;
+}
+.dropdown {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .dropdown {
+    display: block;
+  }
+}
