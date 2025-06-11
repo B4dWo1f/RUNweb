@@ -1,12 +1,12 @@
 - name: Somosierra
   code: somo
-  file: Somosierra.webp
+  file: somo.webp
 - name: Arcones
   code: arcones
-  file: Arcones.webp
+  file: arcones.webp
 - name: Siguero
   code: uri
-  file: Siguero.webp
+  file: uri.webp
 - name: La Muela
   code: muela
-  file: La Muela.webp
+  file: muela.webp
